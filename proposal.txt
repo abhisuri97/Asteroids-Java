@@ -1,0 +1,76 @@
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+CIS 120 Game Project Proposal
+PennKey: 67699396 (suria)
+=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
+
+===============
+=: Your Game :=
+===============
+
+- What game are you planning to implement? If it is a game of your own design,
+  or not especially well-known, provide a 2-3 sentence description of the game.
+Asteroids. 
+
+- What classes and interfaces do you plan to create? How will the different
+  components of your game (the model, the GUI, etc.) interact?
+mainGame.java contains all the methods to initialize game state and takes care of major game logic (i.e. restarting, beginning state, end state) and initializes scores, health
+Asteroids.java contains all the methods to modify game state while the game is being played. Additionally, it will contain the code to create an applet to host on my server (so I can share the game with others).
+Entity.java will contain all the necessary characteristics for a game entity (image, width, height, rotation, position x, position y)
+Spaceship.java will extend Entity.java and add its own methods to modify the state of the spaceship and initialize it
+Asteroid.java will extend Entity.java and add its own methods to modify the state of the asteroids and create child asteroids
+
+- What do you think will be the most challenging thing to implement?
+
+
+====================
+=: Core Concept 1 :=
+====================
+
+Concept 1: Modeling state using collections
+
+- What specific feature of your game will be implemented using this concept?
+A LinkedList will be used to keep a collection of sprites used in the game and each item of this linked list will contain a Entity object that has characteristics settings each entity’s location, rotation, and image.
+
+- Why does it make sense to implement this feature with this concept? Justify
+  why this is a non-trivial application of the concept in question.
+Given that all the game components are dynamic and moving, it is necessary to model them as a collection of objects rather than using something like a 2D Array to change the state of the game every time an object has to move. 
+
+====================
+=: Core Concept 2 :=
+====================
+
+Concept 2: I/O to parse novel file format
+
+- What specific feature of your game will be implemented using this concept?
+This will be used to keep track of high scores for the game and associated usernames for this.
+
+- Why does it make sense to implement this feature with this concept? Justify
+  why this is a non-trivial application of the concept in question.
+Since the game can be played multiple times in separate sessions (perhaps with different instances of the program), there has to be a consistent way to keep track of who has the high score across these game sessions even after the user quits the program. If there was no IO write/read to a file, every time a user opens the game and plays, the first score would be the high score and then it would disappear. Thus it is necessary to include a score tracker through parsing File I/O
+
+====================
+=: Core Concept 3 :=
+====================
+
+Concept 3: Object oriented Design using inheritance and sub typing
+
+- What specific feature of your game will be implemented using this concept?
+All objects in the game are entities. There will be rocket ships, asteroids, lasers, and power ups. 
+
+- Why does it make sense to implement this feature with this concept? Justify
+  why this is a non-trivial application of the concept in question.
+These objects will all have similar characteristics (such as position and an image associated with them). But these objects will have more specific characteristics associated with each of them that are unique. For example, the space ship will have the characteristic of being able to be controlled by a player and a shielded state etc.
+
+====================
+=: Core Concept 4 :=
+====================
+
+Concept 4: Complex Collision boxes
+
+- What specific feature of your game will be implemented using this concept?
+Collision between asteroids and spaceships.
+
+- Why does it make sense to implement this feature with this concept? Justify
+  why this is a non-trivial application of the concept in question.
+In order to ensure that the game is correctly determining whether two objects are in a collided state, it is necessary to provide a more complex collision algorithm (especially since the shape of a spaceship and the shape of an asteroid are irregular and not exactly circles/squares). 
+
